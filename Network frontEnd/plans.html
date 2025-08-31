@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Plans</title>
+    <link rel="stylesheet" href="plans-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Information & Plans</h1>
+        
+        <div class="user-info">
+            <h2>Personal Information</h2>
+            <div class="info-card">
+                <p><strong>Name:</strong> <span id="user-name"></span></p>
+                <p><strong>Mobile:</strong> <span id="user-mobile"></span></p>
+                <p><strong>Address:</strong> <span id="user-address"></span></p>
+                <p><strong>Selected SimCard:</strong> <span id="user-simcard"></span></p>
+            </div>
+        </div>
+
+        <div class="plans-section">
+            <h2>Available Plans</h2>
+            <div id="plans-container" class="plans-grid">
+                <!-- Plans will be loaded here -->
+            </div>
+        </div>
+
+        <div class="selected-plan-section" id="selected-plan-section" style="display: none;">
+            <h2>Selected Plan</h2>
+            <div class="selected-plan-card" id="selected-plan-details">
+                <!-- Selected plan details will be displayed here -->
+            </div>
+            <button onclick="submitPlanSelection()" class="submit-btn">Submit Plan Selection</button>
+        </div>
+
+        <button onclick="goBack()" class="back-btn">Back to Form</button>
+    </div>
+
+    <script src="plans.js"></script>
+</body>
+</html>

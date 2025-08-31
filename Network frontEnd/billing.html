@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Details</title>
+    <link rel="stylesheet" href="billing-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Summary</h1>
+        
+        <div class="billing-card">
+            <div class="user-section">
+                <h2>Customer Details</h2>
+                <div class="details-grid">
+                    <p><strong>Name:</strong> <span id="billing-name"></span></p>
+                    <p><strong>Mobile:</strong> <span id="billing-mobile"></span></p>
+                    <p><strong>Email:</strong> <span id="billing-email"></span></p>
+                    <p><strong>Address:</strong> <span id="billing-address"></span></p>
+                    <p><strong>State:</strong> <span id="billing-state"></span></p>
+                    <p><strong>City:</strong> <span id="billing-city"></span></p>
+                    <p><strong>SimCard:</strong> <span id="billing-simcard"></span></p>
+                </div>
+            </div>
+
+            <div class="plan-section">
+                <h2>Selected Plan</h2>
+                <div class="plan-details" id="billing-plan-details">
+                    <!-- Plan details will be loaded here -->
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h2>Payment Summary</h2>
+                <div class="payment-details">
+                    <div class="amount-row">
+                        <span>Plan Amount:</span>
+                        <span id="plan-amount"></span>
+                    </div>
+                    <div class="amount-row">
+                        <span>GST (18%):</span>
+                        <span id="gst-amount"></span>
+                    </div>
+                    <div class="amount-row total">
+                        <span><strong>Total Amount:</strong></span>
+                        <span id="total-amount"><strong></strong></span>
+                    </div>
+                </div>
+                
+                <button onclick="processPayment()" class="pay-btn">Pay Now</button>
+            </div>
+        </div>
+
+        <button onclick="goBackToPlans()" class="back-btn">Back to Plans</button>
+    </div>
+
+    <script src="billing.js"></script>
+</body>
+</html>
