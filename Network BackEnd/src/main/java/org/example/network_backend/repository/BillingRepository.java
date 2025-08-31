@@ -1,0 +1,11 @@
+package org.example.network_backend.repository;
+
+import org.example.network_backend.entity.Billing;
+import org.example.network_backend.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BillingRepository extends JpaRepository<Billing, Integer> {
+    Billing findByUser(User user);
+}

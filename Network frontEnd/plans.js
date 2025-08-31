@@ -1,3 +1,6 @@
+// Define the backend API base URL - change this to match your Spring Boot server
+const API_BASE_URL = 'http://localhost:8080';
+
 // Load user data from localStorage
 const userData = JSON.parse(localStorage.getItem('userFormData'));
 let selectedPlan = null;
@@ -14,7 +17,7 @@ if (userData) {
 
 // Load plans from backend based on selected SimCard
 if (userData && userData.simcard_id) {
-    fetch(`/data-plans/${userData.simcard_id}/plans`)
+    fetch(`${API_BASE_URL}/data-plans/${userData.simcard_id}/plans`)
         .then(response => response.json())
         .then(plans => {
             const plansContainer = document.getElementById('plans-container');
@@ -22,13 +25,23 @@ if (userData && userData.simcard_id) {
             plans.forEach(plan => {
                 const planCard = document.createElement('div');
                 planCard.className = 'plan-card';
+
+                // Handle null values and format display
+                const validity = plan.validity || 'N/A';
+                const dataPerDay = plan.data_per_day || 'N/A';
+                const voiceCall = plan.voice_call || 'N/A';
+                const smsPerDay = plan.sms_per_day || 'N/A';
+                const description = plan.description || '';
+
                 planCard.innerHTML = `
                     <h3>${plan.plan_name}</h3>
                     <p class="price">₹${plan.price}</p>
-                    <p class="validity">Validity: ${plan.validity} days</p>
-                    <p class="data">Data: ${plan.data_limit}</p>
-                    <p class="description">${plan.description}</p>
-                    <button class="select-plan-btn" onclick="selectPlan(${plan.plan_id}, '${plan.plan_name}', ${plan.price}, '${plan.validity}', '${plan.data_limit}', '${plan.description}')">Select Plan</button>
+                    <p class="validity">Validity: ${validity}</p>
+                    <p class="data">Data: ${dataPerDay}</p>
+                    <p class="voice">Voice: ${voiceCall}</p>
+                    <p class="sms">SMS: ${smsPerDay}</p>
+                    ${description ? `<p class="description">${description}</p>` : ''}
+                    <button class="select-plan-btn" onclick="selectPlan(${plan.id}, '${plan.plan_name.replace(/'/g, "\\'")}', ${plan.price}, '${validity}', '${dataPerDay}', '${voiceCall}', '${smsPerDay}', '${description.replace(/'/g, "\\'")}')">Select Plan</button>
                 `;
                 plansContainer.appendChild(planCard);
             });
@@ -39,14 +52,17 @@ if (userData && userData.simcard_id) {
         });
 }
 
-function selectPlan(planId, planName, price, validity, dataLimit, description) {
+function selectPlan(planId, planName, price, validity, dataPerDay, voiceCall, smsPerDay, description,data_limit) {
     selectedPlan = {
         plan_id: planId,
         plan_name: planName,
         price: price,
         validity: validity,
-        data_limit: dataLimit,
-        description: description
+        data_per_day: dataPerDay,
+        voice_call: voiceCall,
+        sms_per_day: smsPerDay,
+        description: description,
+        data_limit: data_limit
     };
 
     // Display selected plan
@@ -56,9 +72,11 @@ function selectPlan(planId, planName, price, validity, dataLimit, description) {
     selectedPlanDetails.innerHTML = `
         <h3>${planName}</h3>
         <p class="price">₹${price}</p>
-        <p class="validity">Validity: ${validity} days</p>
-        <p class="data">Data: ${dataLimit}</p>
-        <p class="description">${description}</p>
+        <p class="validity">Validity: ${validity}</p>
+        <p class="data">Data: ${dataPerDay}</p>
+        <p class="voice">Voice: ${voiceCall}</p>
+        <p class="sms">SMS: ${smsPerDay}</p>
+        ${description && description !== 'N/A' ? `<p class="description">${description}</p>` : ''}
     `;
     
     selectedPlanSection.style.display = 'block';
@@ -86,7 +104,7 @@ function submitPlanSelection() {
     localStorage.setItem('billingData', JSON.stringify(billingData));
 
     // Send data to backend
-    fetch('/submit-billing', {
+    fetch(`${API_BASE_URL}/submit-billing`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
