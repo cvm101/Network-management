@@ -3,40 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive User Information Form</title>
+    <title>Network Pro - Sign Up for Premium Service</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form class="form-container">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Network Pro</span>
+                </div>
+                <div class="tagline">Premium Network Solutions for Everyone</div>
+            </div>
+        </header>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
+        <main class="main-content">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h1>Get Started Today</h1>
+                    <p>Join thousands of satisfied customers enjoying our premium network services</p>
+                </div>
 
-        <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
 
-        <label for="state">State</label>
-        <select id="state" required>
-            <option value="" disabled selected>Select your state</option>
-        </select>
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Full Name
+                        </label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
 
-        <label for="city">City</label>
-        <select id="city" required>
-            <option value="" disabled selected>Select your city</option>
-        </select>
+                    <div class="form-group">
+                        <label for="mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                            Mobile Number
+                        </label>
+                        <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+                    </div>
 
-        <label for="simcard">SimCard Name</label>
-        <select id="simcard" required>
-            <option value="" disabled selected>Select SimCard</option>
-        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="state">
+                                <i class="fas fa-map-marker-alt"></i>
+                                State
+                            </label>
+                            <select id="state" required>
+                                <option value="" disabled selected>Select your state</option>
+                            </select>
+                        </div>
 
-        <label for="address">Full Address</label>
-        <textarea id="address" rows="4" placeholder="Enter your full address" required></textarea>
+                        <div class="form-group">
+                            <label for="city">
+                                <i class="fas fa-city"></i>
+                                City
+                            </label>
+                            <select id="city" required>
+                                <option value="" disabled selected>Select your city</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <button type="submit">Submit</button>
-    </form>
+                    <div class="form-group">
+                        <label for="simcard">
+                            <i class="fas fa-sim-card"></i>
+                            Preferred Network Provider
+                        </label>
+                        <select id="simcard" required>
+                            <option value="" disabled selected>Select Network Provider</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">
+                            <i class="fas fa-home"></i>
+                            Complete Address
+                        </label>
+                        <textarea id="address" rows="4" placeholder="Enter your complete address for service installation" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Continue to Plans</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    <p>By continuing, you agree to our Terms of Service and Privacy Policy</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Network Pro. All rights reserved.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>

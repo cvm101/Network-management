@@ -3,39 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Plans</title>
+    <title>Network Pro - Choose Your Plan</title>
     <link rel="stylesheet" href="plans-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Your Information & Plans</h1>
-        
-        <div class="user-info">
-            <h2>Personal Information</h2>
-            <div class="info-card">
-                <p><strong>Name:</strong> <span id="user-name"></span></p>
-                <p><strong>Mobile:</strong> <span id="user-mobile"></span></p>
-                <p><strong>Address:</strong> <span id="user-address"></span></p>
-                <p><strong>Selected SimCard:</strong> <span id="user-simcard"></span></p>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Network Pro</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Info</span>
+                    </div>
+                    <div class="progress-step active">
+                        <i class="fas fa-list"></i>
+                        <span>Plans</span>
+                    </div>
+                    <div class="progress-step">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Billing</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
 
-        <div class="plans-section">
-            <h2>Available Plans</h2>
-            <div id="plans-container" class="plans-grid">
-                <!-- Plans will be loaded here -->
+        <main class="main-content">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Choose Your Perfect Plan</h1>
+                    <p>Select from our premium network plans designed for your needs</p>
+                </div>
+
+                <div class="user-info-card">
+                    <div class="info-header">
+                        <i class="fas fa-user-circle"></i>
+                        <h2>Your Information</h2>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <span class="label">Name</span>
+                                <span class="value" id="user-name"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <span class="label">Mobile</span>
+                                <span class="value" id="user-mobile"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="label">Address</span>
+                                <span class="value" id="user-address"></span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-sim-card"></i>
+                            <div>
+                                <span class="label">Network Provider</span>
+                                <span class="value" id="user-simcard"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plans-section">
+                    <div class="section-header">
+                        <h2>Available Plans</h2>
+                        <p>Choose the plan that best fits your lifestyle</p>
+                    </div>
+                    <div id="plans-container" class="plans-grid">
+                        <!-- Plans will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="selected-plan-section" id="selected-plan-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Your Selected Plan</h2>
+                        <p>Review your choice and continue to billing</p>
+                    </div>
+                    <div class="selected-plan-card" id="selected-plan-details">
+                        <!-- Selected plan details will be displayed here -->
+                    </div>
+                    <div class="action-buttons">
+                        <button onclick="submitPlanSelection()" class="continue-btn">
+                            <span>Continue to Billing</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button onclick="goBack()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Form</span>
+                    </button>
+                </div>
             </div>
-        </div>
+        </main>
 
-        <div class="selected-plan-section" id="selected-plan-section" style="display: none;">
-            <h2>Selected Plan</h2>
-            <div class="selected-plan-card" id="selected-plan-details">
-                <!-- Selected plan details will be displayed here -->
-            </div>
-            <button onclick="submitPlanSelection()" class="submit-btn">Submit Plan Selection</button>
-        </div>
-
-        <button onclick="goBack()" class="back-btn">Back to Form</button>
+        <footer class="footer">
+            <p>&copy; 2025 Network Pro. All rights reserved.</p>
+        </footer>
     </div>
 
     <script src="plans.js"></script>

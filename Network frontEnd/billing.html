@@ -3,60 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billing Details</title>
+    <title>Network Pro - Billing Summary</title>
     <link rel="stylesheet" href="billing-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Billing Summary</h1>
-        
-        <div class="billing-card">
-            <div class="user-section">
-                <h2>Customer Details</h2>
-                <div class="details-grid">
-                    <p><strong>Name:</strong> <span id="billing-name"></span></p>
-                    <p><strong>Mobile:</strong> <span id="billing-mobile"></span></p>
-                    <p><strong>Email:</strong> <span id="billing-email"></span></p>
-                    <p><strong>Address:</strong> <span id="billing-address"></span></p>
-                    <p><strong>State:</strong> <span id="billing-state"></span></p>
-                    <p><strong>City:</strong> <span id="billing-city"></span></p>
-                    <p><strong>SimCard:</strong> <span id="billing-simcard"></span></p>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Network Pro</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Info</span>
+                    </div>
+                    <div class="progress-step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Plans</span>
+                    </div>
+                    <div class="progress-step active">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Billing</span>
+                    </div>
                 </div>
             </div>
+        </header>
 
-            <div class="plan-section">
-                <h2>Selected Plan</h2>
-                <div class="plan-details" id="billing-plan-details">
-                    <!-- Plan details will be loaded here -->
+        <main class="main-content">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Billing Summary</h1>
+                    <p>Review your order details and complete your purchase</p>
+                </div>
+
+                <div class="billing-wrapper">
+                    <div class="billing-card">
+                        <div class="customer-section">
+                            <div class="section-header">
+                                <i class="fas fa-user-circle"></i>
+                                <h2>Customer Details</h2>
+                            </div>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <i class="fas fa-user"></i>
+                                    <div>
+                                        <span class="label">Full Name</span>
+                                        <span class="value" id="billing-name"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <div>
+                                        <span class="label">Mobile Number</span>
+                                        <span class="value" id="billing-mobile"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <span class="label">Email Address</span>
+                                        <span class="value" id="billing-email"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <span class="label">Complete Address</span>
+                                        <span class="value" id="billing-address"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map"></i>
+                                    <div>
+                                        <span class="label">State</span>
+                                        <span class="value" id="billing-state"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-city"></i>
+                                    <div>
+                                        <span class="label">City</span>
+                                        <span class="value" id="billing-city"></span>
+                                    </div>
+                                </div>
+                                <div class="detail-item network-provider">
+                                    <i class="fas fa-sim-card"></i>
+                                    <div>
+                                        <span class="label">Network Provider</span>
+                                        <span class="value" id="billing-simcard"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="plan-section">
+                            <div class="section-header">
+                                <i class="fas fa-list-alt"></i>
+                                <h2>Selected Plan Details</h2>
+                            </div>
+                            <div class="plan-details" id="billing-plan-details">
+                                <!-- Plan details will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="payment-section">
+                            <div class="section-header">
+                                <i class="fas fa-calculator"></i>
+                                <h2>Payment Breakdown</h2>
+                            </div>
+                            <div class="payment-card">
+                                <div class="payment-details">
+                                    <div class="amount-row">
+                                        <span class="amount-label">
+                                            <i class="fas fa-tag"></i>
+                                            Plan Amount
+                                        </span>
+                                        <span class="amount-value" id="plan-amount"></span>
+                                    </div>
+                                    <div class="amount-row">
+                                        <span class="amount-label">
+                                            <i class="fas fa-percent"></i>
+                                            GST (18%)
+                                        </span>
+                                        <span class="amount-value" id="gst-amount"></span>
+                                    </div>
+                                    <div class="amount-row installation-row" id="installation-row" style="display: none;">
+                                        <span class="amount-label">
+                                            <i class="fas fa-tools"></i>
+                                            Installation Charge
+                                        </span>
+                                        <span class="amount-value" id="installation-amount"></span>
+                                    </div>
+                                    <div class="amount-row total-row">
+                                        <span class="amount-label total-label">
+                                            <i class="fas fa-receipt"></i>
+                                            <strong>Total Amount</strong>
+                                        </span>
+                                        <span class="amount-value total-value" id="total-amount"></span>
+                                    </div>
+                                </div>
+
+                                <div class="payment-actions">
+                                    <button onclick="processPayment()" class="pay-btn">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Complete Payment</span>
+                                        <i class="fas fa-lock"></i>
+                                    </button>
+                                    <div class="security-note">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Secure SSL encrypted payment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="summary-header">
+                            <h3>Order Summary</h3>
+                        </div>
+                        <div class="summary-content">
+                            <div class="summary-item">
+                                <span>Service Type</span>
+                                <span>Premium Network Plan</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Activation</span>
+                                <span>Within 24 Hours</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Support</span>
+                                <span>24/7 Customer Care</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Warranty</span>
+                                <span>1 Year Service Guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button onclick="goBackToPlans()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Plans</span>
+                    </button>
                 </div>
             </div>
+        </main>
 
-            <div class="payment-section">
-                <h2>Payment Summary</h2>
-                <div class="payment-details">
-                    <div class="amount-row">
-                        <span>Plan Amount:</span>
-                        <span id="plan-amount"></span>
-                    </div>
-                    <div class="amount-row">
-                        <span>GST (18%):</span>
-                        <span id="gst-amount"></span>
-                    </div>
-                    <div class="amount-row" id="installation-row" style="display: none;">
-                        <span>Installation Charge:</span>
-                        <span id="installation-amount"></span>
-                    </div>
-                    <div class="amount-row total">
-                        <span><strong>Total Amount:</strong></span>
-                        <span id="total-amount"><strong></strong></span>
-                    </div>
-                </div>
-                
-                <button onclick="processPayment()" class="pay-btn">Pay Now</button>
-            </div>
-        </div>
-
-        <button onclick="goBackToPlans()" class="back-btn">Back to Plans</button>
+        <footer class="footer">
+            <p>&copy; 2025 Network Pro. All rights reserved.</p>
+        </footer>
     </div>
 
     <script src="billing.js"></script>
